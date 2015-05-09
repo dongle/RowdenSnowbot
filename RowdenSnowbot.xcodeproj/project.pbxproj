@@ -10,7 +10,6 @@
 		CBEE67311AFECEF0001390D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67301AFECEF0001390D1 /* main.m */; };
 		CBEE67341AFECEF0001390D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67331AFECEF0001390D1 /* AppDelegate.m */; };
 		CBEE67371AFECEF0001390D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67361AFECEF0001390D1 /* ViewController.m */; };
-		CBEE673A1AFECEF0001390D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBEE67381AFECEF0001390D1 /* Main.storyboard */; };
 		CBEE673C1AFECEF0001390D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBEE673B1AFECEF0001390D1 /* Images.xcassets */; };
 		CBEE673F1AFECEF0001390D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEE673D1AFECEF0001390D1 /* LaunchScreen.xib */; };
 		CBEE674B1AFECEF0001390D1 /* RowdenSnowbotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE674A1AFECEF0001390D1 /* RowdenSnowbotTests.m */; };
@@ -34,7 +33,6 @@
 		CBEE67331AFECEF0001390D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CBEE67351AFECEF0001390D1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CBEE67361AFECEF0001390D1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CBEE67391AFECEF0001390D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBEE673B1AFECEF0001390D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CBEE673E1AFECEF0001390D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CBEE67441AFECEF0001390D1 /* RowdenSnowbotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RowdenSnowbotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +83,6 @@
 				CBEE67331AFECEF0001390D1 /* AppDelegate.m */,
 				CBEE67351AFECEF0001390D1 /* ViewController.h */,
 				CBEE67361AFECEF0001390D1 /* ViewController.m */,
-				CBEE67381AFECEF0001390D1 /* Main.storyboard */,
 				CBEE673B1AFECEF0001390D1 /* Images.xcassets */,
 				CBEE673D1AFECEF0001390D1 /* LaunchScreen.xib */,
 				CBEE672E1AFECEF0001390D1 /* Supporting Files */,
@@ -199,7 +196,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBEE673A1AFECEF0001390D1 /* Main.storyboard in Resources */,
 				CBEE673F1AFECEF0001390D1 /* LaunchScreen.xib in Resources */,
 				CBEE673C1AFECEF0001390D1 /* Images.xcassets in Resources */,
 			);
@@ -244,14 +240,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CBEE67381AFECEF0001390D1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CBEE67391AFECEF0001390D1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CBEE673D1AFECEF0001390D1 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -416,6 +404,7 @@
 				CBEE67501AFECEF0001390D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CBEE67511AFECEF0001390D1 /* Build configuration list for PBXNativeTarget "RowdenSnowbotTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +413,7 @@
 				CBEE67531AFECEF0001390D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
