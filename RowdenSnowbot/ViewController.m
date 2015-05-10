@@ -64,6 +64,10 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
     self = [super init];
     if (self) {
         
+        self.view.frame = [[UIScreen mainScreen] bounds];
+        NSLog(@"vc frame: %@", NSStringFromCGRect(self.view.frame));
+        self.view.backgroundColor = [UIColor blackColor];
+        
         // SET UP ARRAYS
         self.videosIntro = [[NSMutableArray alloc] init];
         self.videosYes = [[NSMutableArray alloc] init];
@@ -77,14 +81,34 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
         self.videosHotshit = [[NSMutableArray alloc] init];
         self.videosWhy = [[NSMutableArray alloc] init];
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:nil ofType:nil];
+        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+//        NSLog(@"resourcePath: %@", resourcePath);
+        
+        
+        // set up silent
+        NSString *clipsPath = [resourcePath stringByAppendingPathComponent:@"snowclips"];
+//        NSLog(@"clipspath: %@", clipsPath);
+        
+        NSError *error;
+        NSArray *directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:clipsPath error:&error];
+//        NSLog(@"clipscontents: %@", directoryContents);
+        
+        for (NSString *file in directoryContents) {
+            NSString *filePath = [clipsPath stringByAppendingPathComponent:file];
+//            NSLog(@"file: %@", filePath);
+            [self.videosSilent addObject:filePath];
+        }
         
         // SET UP PLAYER
         
         self.player = [[AVPlayer alloc] init];
     //    NSLog(@"compatible types %@", [AVURLAsset audiovisualTypes]);
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(avplayerFinished) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-        [self.view addSubview:_playerView];
+        self.playerView = [[PlayerView alloc] initWithFrame:self.view.frame];
+        self.playerView.backgroundColor = [UIColor blackColor];
+        self.playerView.player = self.player;
+        [self.view addSubview:self.playerView];
+        NSLog(@"playerview: %@", self.playerView);
         [self playVideo:VideoSILENT];
         
         // SET UP WEBSOCKET
@@ -92,6 +116,10 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
         self.timer = [NSTimer timerWithTimeInterval:15.0 target:self selector:@selector(webSocketKeepAlive) userInfo:nil repeats:YES];
     }
     return self;
+}
+                  
+- (void)addFilesFromDirectory:(NSString *)directory toArray:(NSMutableArray *)array {
+    
 }
 
 // WEBSOCKET
@@ -167,7 +195,7 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
 // AVPLAYER
 
 - (void)avplayerFinished {
-    NSLog(@"Finished!");
+//    NSLog(@"Finished!");
     [self playVideo:VideoSILENT];
 }
 
@@ -209,13 +237,18 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
             videoArray = self.videosYes;
             break;
     }
+
+    if (videoArray == nil || [videoArray count] == 0) return;
     
-//    NSUInteger randomIndex = arc4random() % [videoArray count];
-//    NSString *videoURL = [videoArray objectAtIndex:randomIndex];
+    NSUInteger randomIndex = arc4random() % [videoArray count];
+    NSString *videoPath = [videoArray objectAtIndex:randomIndex];
+//    NSLog(@"video: %@", videoPath);
+    NSURL *videoURL = [NSURL fileURLWithPath:videoPath];
+    AVAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
+    AVPlayerItem *anItem = [AVPlayerItem playerItemWithAsset:asset];
     
-    // make avplayeritem
-    
-    // send to avplayer
+    [self.player replaceCurrentItemWithPlayerItem:anItem];
+    [self.player play];
 }
 
 
