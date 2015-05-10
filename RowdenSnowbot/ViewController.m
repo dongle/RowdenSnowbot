@@ -40,6 +40,8 @@
 @property (strong) NSMutableArray *videosHotshit;
 @property (strong) NSMutableArray *videosWhy;
 
+@property (strong) NSTimer *timer;
+
 @end
 
 typedef NS_ENUM(NSInteger, VideoCategory) {
@@ -75,16 +77,19 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
         self.videosHotshit = [[NSMutableArray alloc] init];
         self.videosWhy = [[NSMutableArray alloc] init];
         
+        NSString *path = [[NSBundle mainBundle] pathForResource:nil ofType:nil];
+        
+        // SET UP PLAYER
         
         self.player = [[AVPlayer alloc] init];
     //    NSLog(@"compatible types %@", [AVURLAsset audiovisualTypes]);
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(avplayerFinished) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
         [self.view addSubview:_playerView];
-        // TODO: play silent clip
+        [self playVideo:VideoSILENT];
         
+        // SET UP WEBSOCKET
         [self connectWebSocket];
-        
-        [NSTimer timerWithTimeInterval:15.0 target:self selector:@selector(webSocketKeepAlive) userInfo:nil repeats:YES];
+        self.timer = [NSTimer timerWithTimeInterval:15.0 target:self selector:@selector(webSocketKeepAlive) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -138,13 +143,20 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
 
 - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
     [self.webSocket send:[NSString stringWithFormat:@"Hello from %@", [UIDevice currentDevice].name]];
+    NSLog(@"timer started; websocket opened");
+    [self.timer fire];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
+    [self.timer invalidate];
+    NSLog(@"timer invalidated; websocket failed");
     [self connectWebSocket];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
+    [self.timer invalidate];
+    NSLog(@"timer invalidated; websocket closed");
     [self connectWebSocket];
 }
 
@@ -198,8 +210,8 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
             break;
     }
     
-    NSUInteger randomIndex = arc4random() % [videoArray count];
-    NSString *videoURL = [videoArray objectAtIndex:randomIndex];
+//    NSUInteger randomIndex = arc4random() % [videoArray count];
+//    NSString *videoURL = [videoArray objectAtIndex:randomIndex];
     
     // make avplayeritem
     
