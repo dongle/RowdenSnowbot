@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF22E4A56F716D0DFF302DED /* libPods-RowdenSnowbot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11BFDD44C692BBE4AD59053 /* libPods-RowdenSnowbot.a */; };
 		CBEE67311AFECEF0001390D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67301AFECEF0001390D1 /* main.m */; };
 		CBEE67341AFECEF0001390D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67331AFECEF0001390D1 /* AppDelegate.m */; };
 		CBEE67371AFECEF0001390D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67361AFECEF0001390D1 /* ViewController.m */; };
 		CBEE673C1AFECEF0001390D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBEE673B1AFECEF0001390D1 /* Images.xcassets */; };
 		CBEE673F1AFECEF0001390D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEE673D1AFECEF0001390D1 /* LaunchScreen.xib */; };
 		CBEE674B1AFECEF0001390D1 /* RowdenSnowbotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE674A1AFECEF0001390D1 /* RowdenSnowbotTests.m */; };
+		CBEE67561AFEE289001390D1 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67551AFEE289001390D1 /* PlayerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C11BFDD44C692BBE4AD59053 /* libPods-RowdenSnowbot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RowdenSnowbot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBEE672B1AFECEF0001390D1 /* RowdenSnowbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RowdenSnowbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBEE672F1AFECEF0001390D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBEE67301AFECEF0001390D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -38,6 +41,10 @@
 		CBEE67441AFECEF0001390D1 /* RowdenSnowbotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RowdenSnowbotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBEE67491AFECEF0001390D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBEE674A1AFECEF0001390D1 /* RowdenSnowbotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RowdenSnowbotTests.m; sourceTree = "<group>"; };
+		CBEE67541AFEE289001390D1 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		CBEE67551AFEE289001390D1 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		CD91B6949CAEB16AD0D32096 /* Pods-RowdenSnowbot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RowdenSnowbot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RowdenSnowbot/Pods-RowdenSnowbot.debug.xcconfig"; sourceTree = "<group>"; };
+		ECC276F58A2EA6C3748D1AD3 /* Pods-RowdenSnowbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RowdenSnowbot.release.xcconfig"; path = "Pods/Target Support Files/Pods-RowdenSnowbot/Pods-RowdenSnowbot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF22E4A56F716D0DFF302DED /* libPods-RowdenSnowbot.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +66,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		728F969DA5E2AA8E0AC0DAD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C11BFDD44C692BBE4AD59053 /* libPods-RowdenSnowbot.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CBEE67221AFECEF0001390D1 = {
 			isa = PBXGroup;
 			children = (
 				CBEE672D1AFECEF0001390D1 /* RowdenSnowbot */,
 				CBEE67471AFECEF0001390D1 /* RowdenSnowbotTests */,
 				CBEE672C1AFECEF0001390D1 /* Products */,
+				E91612BC496ADB68227D21E8 /* Pods */,
+				728F969DA5E2AA8E0AC0DAD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +101,8 @@
 				CBEE67331AFECEF0001390D1 /* AppDelegate.m */,
 				CBEE67351AFECEF0001390D1 /* ViewController.h */,
 				CBEE67361AFECEF0001390D1 /* ViewController.m */,
+				CBEE67541AFEE289001390D1 /* PlayerView.h */,
+				CBEE67551AFEE289001390D1 /* PlayerView.m */,
 				CBEE673B1AFECEF0001390D1 /* Images.xcassets */,
 				CBEE673D1AFECEF0001390D1 /* LaunchScreen.xib */,
 				CBEE672E1AFECEF0001390D1 /* Supporting Files */,
@@ -116,6 +136,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E91612BC496ADB68227D21E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CD91B6949CAEB16AD0D32096 /* Pods-RowdenSnowbot.debug.xcconfig */,
+				ECC276F58A2EA6C3748D1AD3 /* Pods-RowdenSnowbot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBEE674E1AFECEF0001390D1 /* Build configuration list for PBXNativeTarget "RowdenSnowbot" */;
 			buildPhases = (
+				977B9432BF2EB51BA4CA2430 /* Check Pods Manifest.lock */,
 				CBEE67271AFECEF0001390D1 /* Sources */,
 				CBEE67281AFECEF0001390D1 /* Frameworks */,
 				CBEE67291AFECEF0001390D1 /* Resources */,
+				E048CD1802E3159641CE452C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,6 +241,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		977B9432BF2EB51BA4CA2430 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E048CD1802E3159641CE452C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RowdenSnowbot/Pods-RowdenSnowbot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CBEE67271AFECEF0001390D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -218,6 +282,7 @@
 				CBEE67371AFECEF0001390D1 /* ViewController.m in Sources */,
 				CBEE67341AFECEF0001390D1 /* AppDelegate.m in Sources */,
 				CBEE67311AFECEF0001390D1 /* main.m in Sources */,
+				CBEE67561AFEE289001390D1 /* PlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +398,7 @@
 		};
 		CBEE674F1AFECEF0001390D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD91B6949CAEB16AD0D32096 /* Pods-RowdenSnowbot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RowdenSnowbot/Info.plist;
@@ -343,6 +409,7 @@
 		};
 		CBEE67501AFECEF0001390D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECC276F58A2EA6C3748D1AD3 /* Pods-RowdenSnowbot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RowdenSnowbot/Info.plist;

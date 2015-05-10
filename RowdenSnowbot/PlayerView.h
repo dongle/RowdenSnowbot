@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PlayerView.h
 //  RowdenSnowbot
 //
 //  Created by Jonathan Beilin on 5/9/15.
@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-#import "SRWebSocket.h"
+@interface PlayerView : UIView
 
-@import AVFoundation;
-
-@interface ViewController : UIViewController<SRWebSocketDelegate>
+@property (nonatomic) AVPlayer *player;
 
 @end
-
