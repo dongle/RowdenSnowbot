@@ -19,10 +19,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.rootVC = [[ViewController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
+    
+    self.rootVC = [[ViewController alloc] init];
     self.window.rootViewController = self.rootVC;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
