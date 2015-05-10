@@ -2,7 +2,7 @@
 # platform :ios, '6.0'
 
 target 'RowdenSnowbot' do
-
+  pod 'SocketRocket'
 end
 
 target 'RowdenSnowbotTests' do
