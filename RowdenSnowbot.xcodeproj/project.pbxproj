@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AF22E4A56F716D0DFF302DED /* libPods-RowdenSnowbot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11BFDD44C692BBE4AD59053 /* libPods-RowdenSnowbot.a */; };
+		CB9BC83B1AFEFDCC00970193 /* snowclips in Resources */ = {isa = PBXBuildFile; fileRef = CB9BC83A1AFEFDCC00970193 /* snowclips */; };
 		CBEE67311AFECEF0001390D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67301AFECEF0001390D1 /* main.m */; };
 		CBEE67341AFECEF0001390D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67331AFECEF0001390D1 /* AppDelegate.m */; };
 		CBEE67371AFECEF0001390D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEE67361AFECEF0001390D1 /* ViewController.m */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		C11BFDD44C692BBE4AD59053 /* libPods-RowdenSnowbot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RowdenSnowbot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB9BC83A1AFEFDCC00970193 /* snowclips */ = {isa = PBXFileReference; lastKnownFileType = folder; path = snowclips; sourceTree = "<group>"; };
 		CBEE672B1AFECEF0001390D1 /* RowdenSnowbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RowdenSnowbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBEE672F1AFECEF0001390D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBEE67301AFECEF0001390D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		CBEE672D1AFECEF0001390D1 /* RowdenSnowbot */ = {
 			isa = PBXGroup;
 			children = (
+				CB9BC83A1AFEFDCC00970193 /* snowclips */,
 				CBEE67321AFECEF0001390D1 /* AppDelegate.h */,
 				CBEE67331AFECEF0001390D1 /* AppDelegate.m */,
 				CBEE67351AFECEF0001390D1 /* ViewController.h */,
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBEE673F1AFECEF0001390D1 /* LaunchScreen.xib in Resources */,
+				CB9BC83B1AFEFDCC00970193 /* snowclips in Resources */,
 				CBEE673C1AFECEF0001390D1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +408,7 @@
 				INFOPLIST_FILE = RowdenSnowbot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -415,6 +420,7 @@
 				INFOPLIST_FILE = RowdenSnowbot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
