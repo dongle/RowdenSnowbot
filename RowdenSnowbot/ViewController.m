@@ -6,15 +6,6 @@
 //  Copyright (c) 2015 com.stupid.snowbot. All rights reserved.
 //
 
-//- replaceCurrentItemWithPlayerItem:
-
-//AVPlayerItemDidPlayToEndTimeNotification
-//AVPlayerItemFailedToPlayToEndTimeNotification
-//AVPlayerItemTimeJumpedNotification
-//AVPlayerItemPlaybackStalledNotification
-//AVPlayerItemNewAccessLogEntryNotification
-//AVPlayerItemNewErrorLogEntryNotification
-
 #import "ViewController.h"
 
 #import "PlayerView.h"
@@ -31,14 +22,15 @@
 @property (strong) NSMutableArray *videosIntro;
 @property (strong) NSMutableArray *videosYes;
 @property (strong) NSMutableArray *videosNo;
-@property (strong) NSMutableArray *videosMaybe;
 @property (strong) NSMutableArray *videosSilent;
-@property (strong) NSMutableArray *videosFreedom;
+@property (strong) NSMutableArray *videosLiberty;
 @property (strong) NSMutableArray *videosNSA;
-@property (strong) NSMutableArray *videosCompanies;
-@property (strong) NSMutableArray *videosDanger;
-@property (strong) NSMutableArray *videosHotshit;
-@property (strong) NSMutableArray *videosWhy;
+@property (strong) NSMutableArray *videosThreats;
+@property (strong) NSMutableArray *videosBragging;
+@property (strong) NSMutableArray *videosCondescension;
+@property (strong) NSMutableArray *videosFactual;
+@property (strong) NSMutableArray *videosNudity;
+@property (strong) NSMutableArray *videosPress;
 
 @property (strong) NSTimer *timer;
 
@@ -48,78 +40,117 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
     VideoINTRO,
     VideoYES,
     VideoNO,
-    VideoMAYBE,
     VideoSILENT,
-    VideoFREEDOM,
+    VideoLIBERTY,
     VideoNSA,
-    VideoCOMPANIES,
-    VideoDANGER,
-    VideoHOTSHIT,
-    VideoWHY
+    VideoTHREATS,
+    VideoBRAGGING,
+    VideoCONDESCENSION,
+    VideoFACTUAL,
+    VideoNUDITY,
+    VideoPRESS
 };
 
 @implementation ViewController
+
+// LIFECYCLE
 
 - (id)init {
     self = [super init];
     if (self) {
         
         self.view.frame = [[UIScreen mainScreen] bounds];
-        NSLog(@"vc frame: %@", NSStringFromCGRect(self.view.frame));
         self.view.backgroundColor = [UIColor blackColor];
         
         // SET UP ARRAYS
         self.videosIntro = [[NSMutableArray alloc] init];
         self.videosYes = [[NSMutableArray alloc] init];
         self.videosNo = [[NSMutableArray alloc] init];
-        self.videosMaybe = [[NSMutableArray alloc] init];
         self.videosSilent = [[NSMutableArray alloc] init];
-        self.videosFreedom = [[NSMutableArray alloc] init];
         self.videosNSA = [[NSMutableArray alloc] init];
-        self.videosCompanies = [[NSMutableArray alloc] init];
-        self.videosDanger = [[NSMutableArray alloc] init];
-        self.videosHotshit = [[NSMutableArray alloc] init];
-        self.videosWhy = [[NSMutableArray alloc] init];
+        self.videosLiberty = [[NSMutableArray alloc] init];
+        self.videosThreats = [[NSMutableArray alloc] init];
+        self.videosBragging = [[NSMutableArray alloc] init];
+        self.videosCondescension = [[NSMutableArray alloc] init];
+        self.videosFactual = [[NSMutableArray alloc] init];
+        self.videosNudity = [[NSMutableArray alloc] init];
+        self.videosPress = [[NSMutableArray alloc] init];
         
         NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//        NSLog(@"resourcePath: %@", resourcePath);
-        
-        
-        // set up silent
         NSString *clipsPath = [resourcePath stringByAppendingPathComponent:@"snowclips"];
-//        NSLog(@"clipspath: %@", clipsPath);
         
-        NSError *error;
-        NSArray *directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:clipsPath error:&error];
-//        NSLog(@"clipscontents: %@", directoryContents);
+        // set up arrays
+        NSString *silentPath = [clipsPath stringByAppendingPathComponent:@"idle"];
+        [self addFilesFromDirectory:silentPath toArray:self.videosSilent];
         
-        for (NSString *file in directoryContents) {
-            NSString *filePath = [clipsPath stringByAppendingPathComponent:file];
-//            NSLog(@"file: %@", filePath);
-            [self.videosSilent addObject:filePath];
-        }
+        NSString *introPath = [clipsPath stringByAppendingPathComponent:@"intro"];
+        [self addFilesFromDirectory:introPath toArray:self.videosIntro];
+        
+        NSString *yesPath = [clipsPath stringByAppendingPathComponent:@"yes"];
+        [self addFilesFromDirectory:yesPath toArray:self.videosYes];
+        
+        NSString *noPath = [clipsPath stringByAppendingPathComponent:@"no"];
+        [self addFilesFromDirectory:noPath toArray:self.videosNo];
+        
+        NSString *libertyPath = [clipsPath stringByAppendingPathComponent:@"liberty"];
+        [self addFilesFromDirectory:libertyPath toArray:self.videosLiberty];
+        
+        NSString *nsaPath = [clipsPath stringByAppendingPathComponent:@"nsa"];
+        [self addFilesFromDirectory:nsaPath toArray:self.videosNSA];
+
+        NSString *threatsPath = [clipsPath stringByAppendingPathComponent:@"threats"];
+        [self addFilesFromDirectory:threatsPath toArray:self.videosThreats];
+        
+        NSString *braggingPath = [clipsPath stringByAppendingPathComponent:@"bragging"];
+        [self addFilesFromDirectory:braggingPath toArray:self.videosBragging];
+
+        NSString *condescensionPath = [clipsPath stringByAppendingPathComponent:@"condescension"];
+        [self addFilesFromDirectory:condescensionPath toArray:self.videosCondescension];
+
+        NSString *factualPath = [clipsPath stringByAppendingPathComponent:@"factualstatements"];
+        [self addFilesFromDirectory:factualPath toArray:self.videosFactual];
+        
+        NSString *nudityPath = [clipsPath stringByAppendingPathComponent:@"nudity"];
+        [self addFilesFromDirectory:nudityPath toArray:self.videosNudity];
+
+        NSString *pressPath = [clipsPath stringByAppendingPathComponent:@"press"];
+        [self addFilesFromDirectory:pressPath toArray:self.videosPress];
+
         
         // SET UP PLAYER
         
         self.player = [[AVPlayer alloc] init];
-    //    NSLog(@"compatible types %@", [AVURLAsset audiovisualTypes]);
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(avplayerFinished) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
         self.playerView = [[PlayerView alloc] initWithFrame:self.view.frame];
         self.playerView.backgroundColor = [UIColor blackColor];
         self.playerView.player = self.player;
         [self.view addSubview:self.playerView];
-        NSLog(@"playerview: %@", self.playerView);
         [self playVideo:VideoSILENT];
         
         // SET UP WEBSOCKET
+        
         [self connectWebSocket];
         self.timer = [NSTimer timerWithTimeInterval:15.0 target:self selector:@selector(webSocketKeepAlive) userInfo:nil repeats:YES];
     }
     return self;
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+// UTILITY
                   
 - (void)addFilesFromDirectory:(NSString *)directory toArray:(NSMutableArray *)array {
+    NSError *error;
+    NSArray *directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directory error:&error];
     
+    for (NSString *file in directoryContents) {
+        NSString *filePath = [directory stringByAppendingPathComponent:file];
+        //            NSLog(@"file: %@", filePath);
+        [array addObject:filePath];
+    }
 }
 
 // WEBSOCKET
@@ -137,10 +168,12 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
 #pragma mark - SRWebSocket delegate
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
-    NSLog(@"received websocket message: %@", message);
     
-    NSString *rawCategory = @"danger";
+    NSString *rawCategory = (NSString *) message;
+
     VideoCategory category;
+    
+    if (rawCategory == nil || ![message isKindOfClass:[NSString class]]) return;
     
     if ([rawCategory  isEqual: @"intro"]) {
         category = VideoINTRO;
@@ -148,22 +181,26 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
         category = VideoYES;
     } else if ([rawCategory  isEqual: @"no"]) {
         category = VideoNO;
-    } else if ([rawCategory  isEqual: @"maybe"]) {
-        category = VideoMAYBE;
-    } else if ([rawCategory  isEqual: @"silent"]) {
+    } else if ([rawCategory  isEqual: @"idle"]) {
         category = VideoSILENT;
-    } else if ([rawCategory  isEqual: @"freedom"]) {
-        category = VideoFREEDOM;
     } else if ([rawCategory  isEqual: @"nsa"]) {
         category = VideoNSA;
-    } else if ([rawCategory  isEqual: @"companies"]) {
-        category = VideoCOMPANIES;
-    } else if ([rawCategory  isEqual: @"danger"]) {
-        category = VideoDANGER;
-    } else if ([rawCategory  isEqual: @"hotshit"]) {
-        category = VideoHOTSHIT;
-    } else if ([rawCategory  isEqual: @"why"]) {
-        category = VideoWHY;
+    } else if ([rawCategory  isEqual: @"liberty"]) {
+        category = VideoLIBERTY;
+    } else if ([rawCategory  isEqual: @"threats"]) {
+        category = VideoTHREATS;
+    } else if ([rawCategory  isEqual: @"bragging"]) {
+        category = VideoBRAGGING;
+    } else if ([rawCategory  isEqual: @"condescension"]) {
+        category = VideoCONDESCENSION;
+    } else if ([rawCategory  isEqual: @"factualstatements"]) {
+        category = VideoFACTUAL;
+    } else if ([rawCategory  isEqual: @"nudity"]) {
+        category = VideoNUDITY;
+    } else if ([rawCategory  isEqual: @"press"]) {
+        category = VideoPRESS;
+    } else {
+        category = VideoSILENT;
     }
     
     [self playVideo:category];
@@ -195,7 +232,6 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
 // AVPLAYER
 
 - (void)avplayerFinished {
-//    NSLog(@"Finished!");
     [self playVideo:VideoSILENT];
 }
 
@@ -203,23 +239,8 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
     NSMutableArray *videoArray = nil;
     
     switch (category) {
-        case VideoCOMPANIES:
-            videoArray = self.videosCompanies;
-            break;
-        case VideoDANGER:
-            videoArray = self.videosDanger;
-            break;
-        case VideoFREEDOM:
-            videoArray = self.videosFreedom;
-            break;
-        case VideoHOTSHIT:
-            videoArray = self.videosHotshit;
-            break;
         case VideoINTRO:
             videoArray = self.videosIntro;
-            break;
-        case VideoMAYBE:
-            videoArray = self.videosMaybe;
             break;
         case VideoNO:
             videoArray = self.videosNo;
@@ -230,11 +251,29 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
         case VideoSILENT:
             videoArray = self.videosSilent;
             break;
-        case VideoWHY:
-            videoArray = self.videosWhy;
-            break;
         case VideoYES:
             videoArray = self.videosYes;
+            break;
+        case VideoLIBERTY:
+            videoArray = self.videosLiberty;
+            break;
+        case VideoTHREATS:
+            videoArray = self.videosThreats;
+            break;
+        case VideoBRAGGING:
+            videoArray = self.videosBragging;
+            break;
+        case VideoCONDESCENSION:
+            videoArray = self.videosCondescension;
+            break;
+        case VideoFACTUAL:
+            videoArray = self.videosFactual;
+            break;
+        case VideoNUDITY:
+            videoArray = self.videosNudity;
+            break;
+        case VideoPRESS:
+            videoArray = self.videosPress;
             break;
     }
 
@@ -242,20 +281,13 @@ typedef NS_ENUM(NSInteger, VideoCategory) {
     
     NSUInteger randomIndex = arc4random() % [videoArray count];
     NSString *videoPath = [videoArray objectAtIndex:randomIndex];
-//    NSLog(@"video: %@", videoPath);
     NSURL *videoURL = [NSURL fileURLWithPath:videoPath];
     AVAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
     AVPlayerItem *anItem = [AVPlayerItem playerItemWithAsset:asset];
     
+    [self.player pause];
     [self.player replaceCurrentItemWithPlayerItem:anItem];
     [self.player play];
-}
-
-
-// LIFECYCLE
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

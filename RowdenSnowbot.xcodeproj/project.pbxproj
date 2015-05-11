@@ -199,6 +199,7 @@
 				TargetAttributes = {
 					CBEE672A1AFECEF0001390D1 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = B2NLKQ6922;
 					};
 					CBEE67431AFECEF0001390D1 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -405,9 +406,12 @@
 			baseConfigurationReference = CD91B6949CAEB16AD0D32096 /* Pods-RowdenSnowbot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RowdenSnowbot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -417,9 +421,12 @@
 			baseConfigurationReference = ECC276F58A2EA6C3748D1AD3 /* Pods-RowdenSnowbot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RowdenSnowbot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
